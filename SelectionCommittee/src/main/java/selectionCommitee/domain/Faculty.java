@@ -1,4 +1,4 @@
-package ua.lviv.lgs.domain;
+package selectionCommitee.domain;
 
 import java.util.List;
 

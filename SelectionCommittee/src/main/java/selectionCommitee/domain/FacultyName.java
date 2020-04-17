@@ -1,4 +1,4 @@
-package ua.lviv.lgs.domain;
+package selectionCommitee.domain;
 
 public enum FacultyName {
 	EDUCATION, HUMANITIES, INFORMATION_TECHNOLOGY, FOREIGN_LANGUAGES, PHILOSOPHY, MATH, TOURISM, NATURAL_SCIENCES,

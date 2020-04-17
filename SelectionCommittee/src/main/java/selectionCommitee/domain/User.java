@@ -1,4 +1,4 @@
-package ua.lviv.lgs.domain;
+package selectionCommitee.domain;
 
 
 
@@ -28,7 +28,7 @@ public class User {
 	private String passwordConfirm;
 	
 	@Enumerated(EnumType.STRING)
-	private UserRole role;
+	private UserRoles role;
 	
 	public User() {}
 	
@@ -41,7 +41,7 @@ public class User {
 		this.role = user.role;
 	}
 
-	public User(String name, String surname, String email, String password, UserRole role) {
+	public User(String name, String surname, String email, String password, UserRoles role) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -49,7 +49,7 @@ public class User {
 		this.role = role;
 	}
 
-	public User(Integer id, String name, String surname, String email, String password, UserRole role) {
+	public User(Integer id, String name, String surname, String email, String password, UserRoles role) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -98,11 +98,11 @@ public class User {
 		this.password = password;
 	}
 
-	public UserRole getRole() {
+	public UserRoles getRole() {
 		return role;
 	}
 
-	public void setRole(UserRole role) {
+	public void setRole(UserRoles role) {
 		this.role = role;
 	}
 
