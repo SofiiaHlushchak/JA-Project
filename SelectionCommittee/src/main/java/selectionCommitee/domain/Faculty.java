@@ -17,22 +17,29 @@ public class Faculty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private FacultyName name;
 	
-	@Column(name = "qty_of_students")
-	private int qtyOfStudents;
+	@Column
+	private String name;
+	
+	@Column(name = "quantity_of_students")
+	private Integer quantityOfStudents;
 	
 	@ElementCollection
 	private List<Subjects> subjects;
-	
+
 	public Faculty() {
 	}
 
-	public Faculty(Integer id, FacultyName name, int qtyOfStudents, List<Subjects> subjects) {
-		super();
+	public Faculty(String name, Integer quantityOfStudents, List<Subjects> subjects) {
+		this.name = name;
+		this.quantityOfStudents = quantityOfStudents;
+		this.subjects = subjects;
+	}
+
+	public Faculty(Integer id, String name, Integer quantityOfStudents, List<Subjects> subjects) {
 		this.id = id;
 		this.name = name;
-		this.qtyOfStudents = qtyOfStudents;
+		this.quantityOfStudents = quantityOfStudents;
 		this.subjects = subjects;
 	}
 
@@ -44,20 +51,20 @@ public class Faculty {
 		this.id = id;
 	}
 
-	public FacultyName getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(FacultyName name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getQtyOfStudents() {
-		return qtyOfStudents;
+	public Integer getQuantityOfStudents() {
+		return quantityOfStudents;
 	}
 
-	public void setQtyOfStudents(int qtyOfStudents) {
-		this.qtyOfStudents = qtyOfStudents;
+	public void setQuantityOfStudents(Integer quantityOfStudents) {
+		this.quantityOfStudents = quantityOfStudents;
 	}
 
 	public List<Subjects> getSubjects() {
@@ -74,7 +81,7 @@ public class Faculty {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + qtyOfStudents;
+		result = prime * result + ((quantityOfStudents == null) ? 0 : quantityOfStudents.hashCode());
 		result = prime * result + ((subjects == null) ? 0 : subjects.hashCode());
 		return result;
 	}
@@ -95,7 +102,10 @@ public class Faculty {
 			return false;
 		if (name != other.name)
 			return false;
-		if (qtyOfStudents != other.qtyOfStudents)
+		if (quantityOfStudents == null) {
+			if (other.quantityOfStudents != null)
+				return false;
+		} else if (!quantityOfStudents.equals(other.quantityOfStudents))
 			return false;
 		if (subjects == null) {
 			if (other.subjects != null)
@@ -107,10 +117,7 @@ public class Faculty {
 
 	@Override
 	public String toString() {
-		return "Faculty [id=" + id + ", name=" + name + ", qtyOfStudents=" + qtyOfStudents + ", subjects=" + subjects
-				+ "]";
+		return "Faculties [id=" + id + ", name=" + name + ", quantityOfStudents=" + quantityOfStudents + ", subjects="
+				+ subjects + "]";
 	}
-	
-	
-	
 }

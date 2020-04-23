@@ -10,27 +10,23 @@ import org.springframework.util.StringUtils;
 
 import selectionCommitee.domain.User;
 
-public class CustomUserDetails  extends User implements UserDetails{
+public class CustomUserDetails extends User implements UserDetails{
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	List<String> userRoles;
-	
-	
+	private List<String> userRoles;
 
 	public CustomUserDetails(User user, List<String> userRoles) {
 		super(user);
 		this.userRoles = userRoles;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		String roles = StringUtils.collectionToCommaDelimitedString(userRoles);
 		return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
-	}
-
-	@Override
-	public String getPassword() {
-		return super.getPassword();
 	}
 
 	@Override
