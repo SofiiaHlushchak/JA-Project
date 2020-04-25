@@ -1,23 +1,28 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="java.sql.*" %>
+<%ResultSet resultset =null;%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Periodicals</title>
+<meta charset="utf-8">
+<title>Entrants</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <body>
-<body>
+
+
+
 	<div class="container">
 
 		<!-- Sidebar -->
 		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
 			<h3 class="w3-bar-item">Menu</h3>
-			<a href="/home" class="w3-bar-item w3-button">Home</a> <a
-				href="/create-entrant" class="w3-bar-item w3-button">Create
-			 	entrant</a> <a href="#" class="w3-bar-item w3-button">All entrants</a>
+			<a href="/home" class="w3-bar-item w3-button">Home</a> 
+			<a href="/create-entrant" class="w3-bar-item w3-button">Create entrant</a>
+			<a href="/success-entrans" class="w3-bar-item w3-button">Rating</a>
 		</div>
 
 
@@ -41,21 +46,66 @@
 
 
 
-				<form:form method="POST" action="${contextPath}/addEntrant" modelAttribute="entrant">
+				<form:form method="POST" action="${contextPath}/addEntrant" enctype="multipart/form-data">
 					<table>
 						<tr>
-							<td><form:label path="firstName">FirstName</form:label></td>
-							<td><form:input path="firstName" /></td>
+							<td>FirstName</td>
+							<td><input type="text" name="firstName" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="lastName">LastName</form:label></td>
-							<td><form:input path="lastName" /></td>
+							<td>LastName</td>
+							<td><input type="text" name="lastName" /></td>
+						</tr>
+				
+						<tr>
+							<td>Faculty</td>
+							<td>
+<%
+								    try{
+								//Class.forName("com.mysql.jdbc.Driver").newInstance();
+								Connection connection = 
+								         DriverManager.getConnection
+								            ("jdbc:mysql://localhost/selection_committee?user=root&password=1234&serverTimezone=UTC");
+								       Statement statement = connection.createStatement() ;
+								       resultset = statement.executeQuery("select * from faculty") ;
+								%>
+								        <select name="faculty">
+								        <%  while(resultset.next()){ %>
+								            <option value = <%= resultset.getInt(1) %>><%= resultset.getString(2) %></option>
+								        <% } %>
+								        </select>	
+								<%
+								//**Should I input the codes here?**
+								        }
+								        catch(Exception e)
+								        {
+								             out.println("wrong entry"+e);
+								        }
+								%>							</td>
 						</tr>
 						<tr>
-							<td><form:label path="faculty">Faculty</form:label></td>
-							<td><form:input path="faculty" /></td>
+							<td>First Subject</td>
+							<td><input type="text" name="firstSubject" /></td>
+						</tr>
+						<tr>
+							<td>Second Subject</td>
+							<td><input type="text" name="secondSubject" /></td>
+						</tr>
+						<tr>
+							<td>Third Subject</td>
+							<td><input type="text" name="thirdSubject" /></td>
+						</tr>
+						<tr>
+							<td>Fourth Subject</td>
+							<td><input type="text" name="fourthSubject" /></td>
 						</tr>
 						
+						
+						<tr>
+							<td>Select an image to upload</td>
+							<td><input type="file" name="image" /></td>
+						</tr>
+												
 						<tr>
 							<td><input type="submit" value="Submit" /></td>
 						</tr>

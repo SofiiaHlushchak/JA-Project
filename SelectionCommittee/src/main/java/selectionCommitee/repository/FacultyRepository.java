@@ -7,5 +7,5 @@ import selectionCommitee.domain.Faculty;
 
 
 public interface FacultyRepository extends JpaRepository<Faculty, Integer>{
-
+	Faculty getById(int id);
 }
