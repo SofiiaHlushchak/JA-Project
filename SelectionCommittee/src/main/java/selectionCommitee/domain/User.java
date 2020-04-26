@@ -2,6 +2,7 @@ package selectionCommitee.domain;
 
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,8 +28,8 @@ public class User {
 	@Transient
 	private String passwordConfirm;
 	
-	@Enumerated(EnumType.STRING)
-	private UserRoles role;
+	@Column(name="role")
+	private String role;
 	
 	public User() {}
 	
@@ -41,7 +42,7 @@ public class User {
 		this.role = user.role;
 	}
 
-	public User(String name, String surname, String email, String password, UserRoles role) {
+	public User(String name, String surname, String email, String password, String role) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -49,7 +50,7 @@ public class User {
 		this.role = role;
 	}
 
-	public User(Integer id, String name, String surname, String email, String password, UserRoles role) {
+	public User(Integer id, String name, String surname, String email, String password, String role) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -98,11 +99,11 @@ public class User {
 		this.password = password;
 	}
 
-	public UserRoles getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(UserRoles role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

@@ -60,7 +60,7 @@
 						<tr>
 							<td>Faculty</td>
 							<td>
-<%
+								<%
 								    try{
 								//Class.forName("com.mysql.jdbc.Driver").newInstance();
 								Connection connection = 
