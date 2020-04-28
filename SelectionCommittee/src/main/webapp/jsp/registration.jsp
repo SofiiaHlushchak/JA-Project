@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
@@ -16,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create an account</title>
+    <title><spring:message code="registration.title" /></title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -32,7 +33,25 @@
 	crossorigin="anonymous">
 
 <link rel="stylesheet" href="../css/login.css">
-    
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption) {
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -40,7 +59,7 @@
 <div class="login-page">
 		<div class="form">
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h2 class="form-signin-heading"><spring:message code="registration.title.2" /></h2>
 
         <spring:bind path="name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
@@ -93,8 +112,17 @@
             </div>
         </spring:bind>
 
-        <button class="register" type="submit">Submit</button>
+        <button class="register" type="submit"><spring:message code="registration.create_account" /></button>
         <p class="message"><a href="${contextPath}/login">Log In</a></p>
+        	<div class="text-center p-t-12">
+						<fieldset>
+							<label><spring:message code="registration.choose_language" /></label> <select
+								class="text-center p-t-12" id="locales">
+								<option value="en"><spring:message code='registration.english' /></option>
+								<option value="uk"><spring:message code='registration.ukrainian' /></option>
+							</select>
+						</fieldset>
+					</div>
     </form:form>
 </div>
 </div>
