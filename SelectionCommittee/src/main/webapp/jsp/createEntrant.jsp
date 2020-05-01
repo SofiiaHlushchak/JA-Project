@@ -61,11 +61,11 @@
 							<table>
 								<tr>
 									<td>Name</td>
-									<td><input class="text" type="text" name="Username" placeholder="Name" required=""></td>
+									<td><input class="text" type="text" name="firstName" placeholder="Name" required=""></td>
 								</tr>
 								<tr>
 									<td>Last Name</td>
-									<td><input class="text email" type="text" name="Username" placeholder="Last Name" required=""></td>
+									<td><input class="text email" type="text" name="lastName" placeholder="Last Name" required=""></td>
 								</tr>
 
 								<tr>
@@ -94,23 +94,23 @@
  %>
 									</td>
 								</tr>
-								<br>
+								
 								<tr>
 									<td>First Subject</td>
-									<td><input class="text" type="email" name="password" placeholder="First Subject" required=""></td>
+									<td><input class="text" type="text" name="firstSubject" placeholder="First Subject" required=""></td>
 								</tr>
 								<tr>
 									<td>Second Subject</td>
-									<td><input class="text w3lpass" type="text" name="password" placeholder="Second Subject" required=""></td>
+									<td><input class="text w3lpass" type="text" name="firstSubject" placeholder="Second Subject" required=""></td>
 								</tr>
 								<tr>
 									<td>Third Subject</td>
-									<td><input class="text" type="text" name="Username" placeholder="Third Subject" required=""></td>
+									<td><input class="text" type="text"  name="thirdSubject" placeholder="Third Subject" required=""></td>
 								</tr>
 								
 								<tr class = "style">
 									<td>Fourth Subject</td>
-									<td><input class="text" type="text" name="Username" placeholder="Fourth Subject" required=""></td>
+									<td><input class="text" type="text" name="fourthSubject" placeholder="Fourth Subject" required=""></td>
 								</tr>
 
 
@@ -119,7 +119,7 @@
 									<td><input type="file" name="image" /></td>
 								</tr>
 	
-								<tr>
+							<tr>
 									<td><input type="submit" value="Submit" /></td>
 								</tr>
 							</table>

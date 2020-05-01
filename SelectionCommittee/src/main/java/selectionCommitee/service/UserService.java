@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import selectionCommitee.domain.User;
-import selectionCommitee.domain.UserRoles;
 import selectionCommitee.repository.UserRepository;
 
 @Service
@@ -34,4 +33,6 @@ public class UserService {
 		logger.debug("Find user by email: " + email);
 		return userRepository.findByEmail(email).get();
 	}
+
+
 }

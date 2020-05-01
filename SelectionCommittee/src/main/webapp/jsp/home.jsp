@@ -36,45 +36,53 @@
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 
-<div class="container">
-
-	<div class="w3-container">
-
-		<c:if test="${pageContext.request.userPrincipal.name != null}">
-			<form id="logoutForm" method="POST" action="${contextPath}/logout">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-			</form>
-			<h2>
-				Welcome ${pageContext.request.userPrincipal.name} | <a
-					onclick="document.forms['logoutForm'].submit()">Logout</a>
-			</h2>
-		</c:if>
 
 
+	<c:if test="${pageContext.request.userPrincipal.name != null}">
+		<form id="logoutForm" method="POST" action="${contextPath}/logout">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</form>
 
-		<c:if test="${not empty entrants}">
-			<c:forEach items="${entrants}" var="currentEntrant">
+	</c:if>
 
-				<div class="w3-card-4" style="width: 20%; margin: 2%">
-					<img src="data:image/jpg;base64, ${currentEntrant.encodedImage}"
-						alt="Norway" style="width: 100%">
-					<div class="w3-container w3-center">
-						<h3>${currentEntrant.firstName}</h3>
-						<h3>${currentEntrant.lastName}</h3>
-						<p>${currentEntrant.faculty.getName()}</p>
 
-					</div>
-					<button class="w3-button w3-block w3-dark-grey">+ add to
-						Faculty</button>
-				</div>
+	<div>
+		<div class="w3-container">
+			<table class="table table-striped"
+				style="margin-top: 2%; padding: 2%; width: 100%; height: 150px">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Last name</th>
+						<th>Faculty</th>
+						<th>Image</th>
 
-			</c:forEach>
-		</c:if>
+					</tr>
+				</thead>
+				<tbody>
+					<c:if test="${not empty entrants}">
+						<c:forEach items="${entrants}" var="currentEntrant">
+
+							<tr>
+								<td>${currentEntrant.id}</td>
+								<th><h3>${currentEntrant.firstName}</h3></th>
+								<th><h3>${currentEntrant.lastName}</h3></th>
+								<th><p>${currentEntrant.faculty.getName()}</p></th>
+								<th><img
+									src="data:image/jpg;base64, ${currentEntrant.encodedImage}"
+									alt="Norway" style="width: 15%; height:20%"></th>
+							</tr>
+
+
+						</c:forEach>
+					</c:if>
+
+				</tbody>
+			</table>
+		</div>
 	</div>
-
-	</div>
-</div>
 
 
 	<!-- /container -->
